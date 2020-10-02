@@ -3,14 +3,28 @@ syntax = "proto3";
 package blog;
 option go_package = "github.com/bigsky-park/go-grpc-example/blog;blog";
 
+import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
 service BlogService {
-  rpc CreatePost (CreatePostRequest) returns (CreatePostResponse) {}
+  rpc CreatePost (CreatePostRequest) returns (CreatePostResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/blog/post"
+      body: "*"
+    };
+  }
 
-  rpc GetPost (GetPostRequest) returns (GetPostResponse) {}
+  rpc GetPost (GetPostRequest) returns (GetPostResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/blog/post/{writer}/{id}"
+    };
+  }
 
-  rpc ListPosts (ListPostsRequest) returns (ListPostsResponse) {}
+  rpc ListPosts (ListPostsRequest) returns (ListPostsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/blog/posts/{writer}"
+    };
+  }
 }
 
 message Post {

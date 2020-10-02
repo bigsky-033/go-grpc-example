@@ -16,7 +16,7 @@ import (
 )
 
 var (
-	grpcPort            = pflag.Int32("grpc_port", 8080, "Grpc service port. Default: 8080.")
+	grpcPort            = pflag.Int32("grpc_port", 18080, "Grpc service port. Default: 8080.")
 	httpHealthCheckPort = pflag.Int32("http_health_check_port", 8081, "Health check port. Default: 8081.")
 )
 
