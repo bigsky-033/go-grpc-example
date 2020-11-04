@@ -42,6 +42,8 @@ func main() {
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *grpcPort))
 	if err != nil {
 		klog.Fatalf("Failed to listen grpc port. Details: %v", err)
+	} else {
+		klog.Infof("Listen grpc port: %d", *grpcPort)
 	}
 
 	s := grpc.NewServer()
